@@ -16,8 +16,9 @@ class IndexController extends Controller
             ['id' => 3, 'title' => 'Third Post', 'posted_by' => 'Cr7', 'created_at' => '2025-11-10 10:00:00'],
             ['id' => 4, 'title' => 'Special Post', 'posted_by' => 'Gohar', 'created_at' => '2007-7-7 17:00:00']
         ];
-
-        return view('posts.index', ['posts' => $posts]);
+        compact('posts') ;
+        // return view('posts.index', ['posts' => $posts]);
+                return view('posts.index',  compact('posts'));
     } 
 
     ///================== Create Posts  Method   ===============================
@@ -30,16 +31,14 @@ class IndexController extends Controller
     //================== store post ======================== 
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
         return to_route('posts.index');
         
-        // return redirect()->route('posts.index');
     }
 
     ///================== Show Posts  Method   ===============================
 
-
-    public function show($postId)
+    public function show(string $postId)
     {
         $posts = [
             [

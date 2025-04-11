@@ -4,7 +4,7 @@
 
         <form method="POST" action="{{ route('posts.update', $post['id']) }}">
             @csrf
-            {{-- @method('PUT') --}}
+            @method('PUT')
 
             <div class="mb-4">
                 <label class="block text-gray-700 font-bold mb-2">Title</label>
