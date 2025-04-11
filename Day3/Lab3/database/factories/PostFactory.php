@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
@@ -19,6 +20,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(6),
+            'slug' => Str::slug($this->faker->sentence(6)),
             'description' => $this->faker->paragraph(3),
             'user_id' => User::inRandomOrder()->first()->id,
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),

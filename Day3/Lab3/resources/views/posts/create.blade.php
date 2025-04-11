@@ -13,6 +13,9 @@
                     <label class="block text-gray-700 font-bold mb-2">Title</label>
                     <input type="text" name="title"
                         class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    @error('title')
+                        <p class="text-sm text-red-500 dark:text-red-400 mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <!-- Description Input -->
@@ -20,6 +23,9 @@
                     <label class="block text-gray-700 font-bold mb-2">Description</label>
                     <textarea name="description"
                         class="w-full px-4 py-2 border rounded-lg h-24 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    @error('description')
+                        <p class="text-sm text-red-500 dark:text-red-400 mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <!-- Post Creator Select -->
@@ -32,6 +38,20 @@
                         @endforeach
 
                     </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2">Post Image</label>
+                    <input type="file" name="image" class="w-full px-4 py-2 border rounded-lg">
+                    @error('image')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                    
+                    @isset($post->image_url)
+                        <div class="mt-2">
+                            <img src="{{ $post->image_url }}" alt="Current post image" class="h-32">
+                            <p class="text-sm text-gray-500 mt-1">Current image</p>
+                        </div>
+                    @endisset
                 </div>
 
                 <!-- Submit Button -->

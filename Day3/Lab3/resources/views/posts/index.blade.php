@@ -30,7 +30,8 @@
                 @foreach ($posts as $post)
                     <tr>
                         <td class="border px-4 py-2">{{ $post->id }}</td>
-                        <td class="border px-4 py-2">{{ $post->title }}</td>
+                        {{-- <td class="border px-4 py-2">{{ $post->title }}</td> --}}
+                        <td class="px-4 py-2">{{ $post->slug }}</td>
                         {{-- <td class="border px-4 py-2">{{ $post->posted_by }}</td> --}}
                         <td class="px-4 py-2">{{ $post->user ? $post->user->name : 'Not Found' }}</td>
                         <td class="border px-4 py-2">{{ $post->created_at->format('M d, Y H:i') }}</td>

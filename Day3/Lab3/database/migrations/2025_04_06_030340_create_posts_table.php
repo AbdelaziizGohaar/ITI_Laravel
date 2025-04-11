@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('slug')->unique();
             $table->string('title');
             $table->text('description');
             $table->unsignedBigInteger('user_id')->nullable(); //create column
@@ -28,5 +29,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('posts');
+        // Schema::table('posts', function (Blueprint $table) {
+        //     $table->dropColumn('slug');
+        // });
     }
+    
 };
